@@ -9,6 +9,7 @@ public:
     FindCenter() {}
     ~FindCenter() {}
 
+
     std::pair<int, int> FindCenterOfStage(const std::string& text, int x1, int y1, int x2, int y2) {
         if (text.find(u8"스테이지") != std::string::npos) {
             int centerX = (x1 + x2) / 2;
