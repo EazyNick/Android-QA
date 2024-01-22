@@ -14,7 +14,7 @@ public:
         if (text.find(u8"스테이지") != std::string::npos) {
             int centerX = (x1 + x2) / 2;
             int centerY = (y1 + y2) / 2;
-            std::cout << "Axis Click" << centerX << ',' << centerY << std::endl;
+            //std::cout << "Axis Click" << centerX << ',' << centerY << std::endl;
             return { centerX, centerY };
         }
         return { -1, -1 }; // Return invalid coordinates if not found

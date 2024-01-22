@@ -27,6 +27,12 @@
     <ClCompile Include="FreeTypeTextRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OCR_Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Test.png">
@@ -38,6 +44,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Find_Center.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OCR_Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

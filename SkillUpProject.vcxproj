@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,6 +131,8 @@
     <ClCompile Include="backup.cpp" />
     <ClCompile Include="FreeTypeTextRenderer.cpp" />
     <ClCompile Include="OCR.cpp" />
+    <ClCompile Include="OCR_Main.cpp" />
+    <ClCompile Include="Test_Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Test.png" />
@@ -137,6 +140,7 @@
   <ItemGroup>
     <ClInclude Include="Find_Center.h" />
     <ClInclude Include="FreeTypeTextRenderer.h" />
+    <ClInclude Include="OCR_Main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

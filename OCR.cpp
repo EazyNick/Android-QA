@@ -1,3 +1,7 @@
+/*
+
+// 이미지 띄우는건 제외하고, 찾고, 좌표값 반환만 구현하자!, roi 추가 하기
+
 #include "FreeTypeTextRenderer.h"
 #include <opencv2/opencv.hpp>
 #include <tesseract/baseapi.h>
@@ -11,9 +15,9 @@ int main() {
     FT_Library ft;
     FT_Face face;
 
-    FreeTypeTextRenderer TextRenderer("D:/SkillUpProject/Assets/NanumBarunGothic-YetHangul.ttf");
+    FreeTypeTextRenderer TextRenderer("Assets/NanumBarunGothic-YetHangul.ttf");
 
-    if (!TextRenderer.InitFreeType(ft, face, "D:/SkillUpProject/Assets/NanumBarunGothic-YetHangul.ttf")) { // 폰트 경로를 지정하세요
+    if (!TextRenderer.InitFreeType(ft, face, "Assets/NanumBarunGothic-YetHangul.ttf")) { // 폰트 경로를 지정하세요
         return 1;
     }
 
@@ -28,7 +32,7 @@ int main() {
     }
 
     // 이미지 불러오기 (OpenCV 사용)
-    cv::Mat image = cv::imread("D:/SkillUpProject/Assets/Test.png");
+    cv::Mat image = cv::imread("Assets/Test.png");
     api->SetImage(image.data, image.cols, image.rows, 3, image.step);
 
     // 텍스트 인식
@@ -60,7 +64,6 @@ int main() {
             FindCenter findCenterInstance;
             std::pair<int, int> center = findCenterInstance.FindCenterOfStage(text, x1, y1, x2, y2);
 
-
             // 텍스트 이미지에 그리기 (사용자 정의 폰트 사용)
             // FreeType을 사용하여 텍스트 이미지에 그리기
             TextRenderer.PutTextFT(image, utf_text, cv::Point(x1, y2 + 24), face, 24, cv::Scalar(255, 255, 255));
@@ -68,7 +71,6 @@ int main() {
 
         } while (ri->Next(level));
     }
-
 
     // 이미지 크기 조정
     cv::Mat resizedImage;
@@ -86,3 +88,5 @@ int main() {
 
     return 0;
 }
+
+*/
