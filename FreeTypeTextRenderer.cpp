@@ -73,7 +73,7 @@ void FreeTypeTextRenderer::PutTextFT(cv::Mat& img, const std::string& text, cv::
     }
 }
 
-
+// 한글 사용을 위한 ANSI 형태 변환 함수
 char* FreeTypeTextRenderer::UTF8ToANSI(const char* pszCode)
 {
     BSTR    bstrWide;

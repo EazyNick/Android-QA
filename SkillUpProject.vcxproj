@@ -141,6 +141,7 @@
     <ClInclude Include="Find_Center.h" />
     <ClInclude Include="FreeTypeTextRenderer.h" />
     <ClInclude Include="OCR_Main.h" />
+    <ClInclude Include="PreProcessImage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

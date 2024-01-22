@@ -49,5 +49,8 @@
     <ClInclude Include="OCR_Main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PreProcessImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
