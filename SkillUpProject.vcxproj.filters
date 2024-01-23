@@ -18,7 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OCR.cpp">
+    <ClCompile Include="OCR_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="backup.cpp">
@@ -30,12 +30,24 @@
     <ClCompile Include="OCR_Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Test_Main.cpp">
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Template Matching.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Template Matching_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Test.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Test2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\test3.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -50,6 +62,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PreProcessImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Template Matching.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

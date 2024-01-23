@@ -130,18 +130,23 @@
   <ItemGroup>
     <ClCompile Include="backup.cpp" />
     <ClCompile Include="FreeTypeTextRenderer.cpp" />
-    <ClCompile Include="OCR.cpp" />
+    <ClCompile Include="OCR_test.cpp" />
     <ClCompile Include="OCR_Main.cpp" />
-    <ClCompile Include="Test_Main.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Template Matching.cpp" />
+    <ClCompile Include="Template Matching_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Test.png" />
+    <Image Include="Assets\Test2.png" />
+    <Image Include="Assets\test3.png" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Find_Center.h" />
     <ClInclude Include="FreeTypeTextRenderer.h" />
     <ClInclude Include="OCR_Main.h" />
     <ClInclude Include="PreProcessImage.h" />
+    <ClInclude Include="Template Matching.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

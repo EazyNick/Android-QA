@@ -96,8 +96,8 @@ std::pair<int, int> OCR_Main(const std::string& imagePath, const std::string& ta
     }
 
     // Clean up resources
-    FT_Done_Face(face);
-    FT_Done_FreeType(ft);
+    //FT_Done_Face(face);
+    //FT_Done_FreeType(ft);
     delete ri;
     api->End();
 
