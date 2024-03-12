@@ -1,4 +1,4 @@
-#include "OCR_Main.h"
+#include "OCR.h"
 #include "FreeTypeTextRenderer.h"
 #include "Find_Center.h"
 #include "PreProcessImage.h"

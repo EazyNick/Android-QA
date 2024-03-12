@@ -27,7 +27,7 @@
     <ClCompile Include="FreeTypeTextRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OCR_Main.cpp">
+    <ClCompile Include="OCR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
@@ -58,7 +58,7 @@
     <ClInclude Include="Find_Center.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OCR_Main.h">
+    <ClInclude Include="OCR.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PreProcessImage.h">

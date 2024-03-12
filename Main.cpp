@@ -1,4 +1,4 @@
-#include "OCR_Main.h"
+#include "OCR.h"
 #include <iostream>
 #include "Template Matching.h"
 
