@@ -50,12 +50,16 @@
     <ClCompile Include="CInputDialog.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="adb_shell_input.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="appDiago.htm" />
     <None Include="res\appDiago.rc2">
       <Filter>리소스 파일</Filter>
     </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="appDiago.rc">
