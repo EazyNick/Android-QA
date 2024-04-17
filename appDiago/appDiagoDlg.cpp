@@ -13,6 +13,9 @@
 #include <afxwin.h> // MFC core and standard components
 #include <afxext.h> // MFC extensions
 #include <afxdisp.h> // MFC Automation classes
+#include <iostream>
+#include <windows.h>
+#include <cstdlib>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -571,61 +574,67 @@ BOOL IsPathValid(const CString& strPath)
 void CappDiagoDlg::OnBnClickedButton4()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString strCommand; 
+	CString exePath;
 	CString m_strCppFilePath = get_path();
-	CString m_strExeFilePath = _T("C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe");
-	strCommand.Format(_T("cl /EHsc \"%s\" /Fe\"%s\""), m_strCppFilePath, m_strExeFilePath);
+	CString m_strExeFilePath = _T("C:\\Windows\\System32\\cmd.exe");
+	CString command_path;
+	CString adb_zip;
+	command_path.Format(_T("cl %s /c"), m_strCppFilePath);
+	// wchar_t 배열을 선언하고 충분한 크기를 할당합니다.
+	wchar_t commandLine[1024];
+	DWORD bufferSize = MAX_PATH;
+	wchar_t currentDirectory[MAX_PATH];
 
-	// 'cl /EHsc'는 MSVC 컴파일러를, 'm_strCppFilePath'는 .cpp 파일의 경로를,
-	// '/Fe' 옵션은 출력 파일의 이름을 지정하는 옵션이고, 'm_strExeFilePath'는 출력 파일의 경로를 나타냅니다.
-
-	// 위의 경로는 실제 경로로 변경해야 합니다.
-	SECURITY_ATTRIBUTES saAttr;
-	saAttr.nLength = sizeof(SECURITY_ATTRIBUTES);
-	saAttr.bInheritHandle = TRUE;
-	saAttr.lpSecurityDescriptor = NULL;
-
-	// 표준 출력에 대한 파이프 생성
-	HANDLE hChildStd_OUT_Rd = NULL;
-	HANDLE hChildStd_OUT_Wr = NULL;
-
-	if (!CreatePipe(&hChildStd_OUT_Rd, &hChildStd_OUT_Wr, &saAttr, 0))
-	{
-		AfxMessageBox(_T("파이프 생성 실패"));
-		return;
+	if (GetCurrentDirectory(bufferSize, currentDirectory)) {
+		adb_zip.Format(_T("cl /I C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\shared %s\\adb_shell_input.cpp /c"), currentDirectory);
+		AfxMessageBox(adb_zip);
 	}
-
-	// 자식 프로세스의 핸들 상속을 끄기
-	if (!SetHandleInformation(hChildStd_OUT_Rd, HANDLE_FLAG_INHERIT, 0))
-	{
-		AfxMessageBox(_T("핸들 상속 설정 실패"));
-		return;
+	exePath.Format(_T("link %s adb_shell_input.obj"), ChangeExtensionToCstr(out_fileName(get_path()),_T("obj")));
+	// Visual C++ 컴파일러를 사용한 컴파일 예제
+   // "yourProgram.cpp"를 현재 디렉토리에 컴파일합니다.
+	CStringA target_objPath(command_path);
+	CStringA adb_objPath(adb_zip);
+	CStringA target_exePath(exePath);
+	CStringA profile_play(ChangeExtensionToCstr(out_fileName(get_path()), _T("exe")));
+	int objResult = system(target_objPath);
+	int objAdb = system(adb_objPath);
+	if (objResult != 0 || objAdb != 0) {
+		AfxMessageBox(_T("컴파일 실패"));
 	}
+	system(target_exePath);
+	// 컴파일된 프로그램 실행
+	system(profile_play);
+}
 
-	// 프로세스 정보 구조체
-	PROCESS_INFORMATION piProcInfo;
-	ZeroMemory(&piProcInfo, sizeof(PROCESS_INFORMATION));
+CString CappDiagoDlg::out_fileName(CString str) {
 
-	// 스타트업 정보 구조체
-	STARTUPINFO siStartInfo;
-	ZeroMemory(&siStartInfo, sizeof(STARTUPINFO));
+	// '\\' 문자를 뒤에서부터 찾는다
+	int pos = str.ReverseFind('\\');
 
-	siStartInfo.cb = sizeof(STARTUPINFO);
-	siStartInfo.hStdError = hChildStd_OUT_Wr;
-	siStartInfo.hStdOutput = hChildStd_OUT_Wr;
-	siStartInfo.dwFlags |= STARTF_USESTDHANDLES;
-	AfxMessageBox(strCommand.GetBuffer());
-	if (IsPathValid(m_strExeFilePath))
-	{
-		// 경로가 유효한 경우
-		AfxMessageBox(_T("지정된 경로가 유효합니다."));
+	if (pos != -1) {
+		// 찾은 위치 다음부터 문자열 끝까지가 파일 이름이다
+		CString fileName = str.Mid(pos + 1);
+		std::wcout << _T("File Name: ") << (LPCTSTR)fileName << std::endl;
+		return fileName;
 	}
 	else {
-		// 경로가 유효하지 않은 경우
-		AfxMessageBox(_T("지정된 경로가 유효하지 않습니다."));
+		// '\\' 문자가 없는 경우, 전체 경로가 파일 이름이다
+		std::wcout << _T("File Name: ") << (LPCTSTR)str << std::endl;
+		return str;
 	}
-	// 프로세스 생성
-	char command[256];
-	sprintf_s(command, sizeof(command), "cmd /K \"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx64\\x64\\cl.exe\" /EHsc /Fe:output %s", m_strCppFilePath);
-	system(command);
+}
+
+CString CappDiagoDlg::ChangeExtensionToCstr(CString path, CString key) {
+
+	// 마지막 '.'의 위치를 찾습니다.
+	int dotIndex = path.ReverseFind('.');
+
+	if (dotIndex != -1) { // '.'이 발견되면
+		path = path.Left(dotIndex) + key; // 확장자를 .obj로 변경
+	}
+	else {
+		// 확장자가 없는 경우, .obj를 추가
+		path += key;
+	}
+	return path;
 }

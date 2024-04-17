@@ -69,4 +69,6 @@ public:
 	afx_msg void OnBnClickedButton2();
 	afx_msg void OnBnClickedButton3();
 	afx_msg void OnBnClickedButton4();
+	CString out_fileName(CString str);
+	CString ChangeExtensionToCstr(CString path, CString key);
 };

@@ -192,6 +192,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="adb_shell_input.cpp" />
     <ClCompile Include="appDiago.cpp" />
     <ClCompile Include="appDiagoDlg.cpp" />
     <ClCompile Include="CInputDialog.cpp" />
@@ -206,6 +207,7 @@
     <None Include="appDiago.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="cpp.hint" />
     <None Include="res\appDiago.rc2" />
   </ItemGroup>
   <ItemGroup>
